@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: black;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: url('https://i.imgur.com/lD0wh18.jpg') repeat;
+      background-size: cover;
+      animation: zoom 60s linear infinite;
+      z-index: -3;
+      filter: brightness(0.5);
+    }
+
+    @keyframes zoom {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.3); }
+    }
+
+    .card {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(15px);
+      border-radius: 20px;
+      padding: 80px;
+      text-align:center;
+      max-width: 900px;
+      box-shadow: 0 20px 40px rgba(255, 0, 100, 0.4);
+      color: white;
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #ff66cc;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px #ff66cc;
+    }
+
+    #yourMessage {
+      font-size: 0.5rem;
+      color:black;
+      margin: 10px 0;
+      line-height: 1.7;
+      display: none;
+    }
+
+    .button {
+      background: linear-gradient(45deg, #ff1493, #ff69b4);
+      color: white;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .button:hover {
+      background: linear-gradient(45deg, #ff69b4, #ff1493);
+      transform: scale(1.05);
+    }
+
+    #finalMessage {
+      display: none;
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #ff3366;
+      text-shadow: 0 0 15px #ff3366;
+      animation: fadeInZoom 1s ease forwards;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+    }
+
+    @keyframes fadeInZoom {
+      0% { transform: scale(0) translate(-50%, -50%); opacity: 0; }
+      100% { transform: scale(1) translate(-50%, -50%); opacity: 1; }
+    }
+
+    .heart {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(45deg);
+      animation: float 6s linear infinite;
+      opacity: 0.7;
+      z-index: 0;
+    }
+
+    .heart::before, .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before { top: -10px; left: 0; }
+    .heart::after  { left: -10px; top: 0; }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) rotate(45deg); opacity: 1; }
+      100% { transform: translateY(-20vh) rotate(45deg); opacity: 0; }
+    }
+
+    #dancingGirl {
+      display: none;
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      height: 100vh;
+      z-index: 0;
+      opacity: 0.9;
+      animation: floatGirl 4s ease-in-out infinite;
+    }
+
+    @keyframes floatGirl {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Dancing Girl -->
+  <img id="dancingGirl" src="https://64.media.tumblr.com/f643eafc3f385df1a79ab078603c6dd6/tumblr_o8lppxqLIv1u808m1o1_500.gifv" alt="Dancing Girl">
+
+  <div class="card" id="card">
+    <h1 id="title">Hey mrr busyyyy 💖</h1>
+    <div id="yourMessage">
+        <pre>
+        Hey You, My Forever Human (Hopefully 😄),
+
+        I’ve been meaning to say something important — something that’s been sitting in my heart for a while now.
+        
+        First of all, I love you. Like, really love you. Like “want to build a life with you, grow old together, argue about ur attitude every day, and still choose you again and again” kind of love. 💛
+        
+        Now, here comes the gentle but honest part:
+        Mrrr, you’re always busy. Like… are you bored in just few months? 😅 Because it’s giving “CEO of Not Answering My Calls” energy. I swear, even Google Calendar doesn’t have this much going on.
+        
+        And while I totally understand that life gets hectic, it does get to me when you ignore me or go quiet. It makes me feel really low sometimes. Like I’m on the back burner of your priorities — and that’s a 
+        tough place to be when all I want is to be close to you.
+        
+        So here’s my little request (okay, maybe a big one):
+        Pick up my calls. Reply to my messages. Let me know you’re there. Even a simple “I’m alive, talk later” is better than silence. Communication doesn’t have to be a full  Talk — just a signal that I matter.
+        
+        Because I do. And so do you. So does we.
+        
+        And with all that said, here’s the big part…
+        
+        Will you be mine?
+        Officially. Fully. With laughter, love, effort, and yes — a little less ghosting. 👻💖
+        
+        Let’s make this forever — and maybe schedule time for love between all those mysterious meetings. 😉
+        
+        Yours (even if I have to book an appointment),
+        annoyer(in ur language) 💕
+        </pre>
+    </div>
+    <button class="button" id="nextBtn" onclick="nextStep()">Start</button>
+  </div>
+
+  <div id="finalMessage">I LOVE YOU 💘</div>
+
+  <script>
+    const title = document.getElementById("title");
+    const yourMessage = document.getElementById("yourMessage");
+    const nextBtn = document.getElementById("nextBtn");
+    const finalMessage = document.getElementById("finalMessage");
+    const card = document.getElementById("card");
+    const girl = document.getElementById("dancingGirl");
+
+    let step = 0;
+
+    function nextStep() {
+      if (step === 0) {
+        title.innerText = " ahhhhhh";
+        yourMessage.style.display = "block";
+        nextBtn.innerText = "Next";
+        girl.style.display = "block"; // Show her in message stage
+        step++;
+      } else if (step === 1) {
+        card.style.display = "none";
+        finalMessage.style.display = "block";
+        girl.style.display = "none"; // Hide again in final message
+        generateHearts();
+      }
+    }
+
+    function generateHearts() {
+      for (let i = 0; i < 40; i++) {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 8000);
+      }
+    }
+  </script>
+</body>
+</html>
